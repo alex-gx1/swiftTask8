@@ -5,6 +5,7 @@ class ViewController: UIViewController {
     
     var names: [String] = ["Alfred", "Alexandr", "Ivan"]
 
+    @IBOutlet private weak var textFieldName: UITextField!
     @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -13,6 +14,13 @@ class ViewController: UIViewController {
         tableView.dataSource = self
   
     }
+    
+    @IBAction private func pushAddAction(_ sender: Any) {
+        names.append(textFieldName.text ?? "")
+        tableView.reloadData()
+        textFieldName.text = ""
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource {
